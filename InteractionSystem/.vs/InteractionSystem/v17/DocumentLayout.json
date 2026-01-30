@@ -7,16 +7,24 @@
       "RelativeMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|solutionrelative:assets\\interactionsystem\\scripts\\runtime\\core\\doorinteractable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\assets\\interactionsystem\\scripts\\runtime\\core\\keycollectable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|solutionrelative:assets\\interactionsystem\\scripts\\runtime\\core\\keycollectable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\assets\\interactionsystem\\scripts\\runtime\\core\\keyinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|solutionrelative:assets\\interactionsystem\\scripts\\runtime\\core\\keyinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\assets\\interactionsystem\\scripts\\runtime\\core\\key.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|solutionrelative:assets\\interactionsystem\\scripts\\runtime\\core\\key.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\assets\\interactionsystem\\scripts\\runtime\\core\\doorinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|solutionrelative:assets\\interactionsystem\\scripts\\runtime\\core\\doorinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|g:\\unityprojects\\interactionsystem-goktugbayil\\interactionsystem\\assets\\interactionsystem\\scripts\\runtime\\core\\dooritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\assets\\interactionsystem\\scripts\\runtime\\core\\dooritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|solutionrelative:assets\\interactionsystem\\scripts\\runtime\\core\\dooritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|g:\\unityprojects\\interactionsystem-goktugbayil\\interactionsystem\\assets\\interactionsystem\\scripts\\runtime\\core\\keycollectable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{075B3CA0-5764-A0A4-530C-BD54FD534B0B}|Assembly-CSharp.csproj|solutionrelative:assets\\interactionsystem\\scripts\\runtime\\core\\keycollectable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,8 +34,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "KeyInventory.cs",
+              "DocumentMoniker": "G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\KeyInventory.cs",
+              "RelativeDocumentMoniker": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\KeyInventory.cs",
+              "ToolTip": "G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\KeyInventory.cs",
+              "RelativeToolTip": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\KeyInventory.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T21:09:11.669Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Key.cs",
+              "DocumentMoniker": "G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\Key.cs",
+              "RelativeDocumentMoniker": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\Key.cs",
+              "ToolTip": "G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\Key.cs",
+              "RelativeToolTip": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\Key.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T20:18:36.488Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -36,49 +68,46 @@
               "RelativeDocumentMoniker": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\DoorInteractable.cs",
               "ToolTip": "G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\DoorInteractable.cs",
               "RelativeToolTip": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\DoorInteractable.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCEAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAowDYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-30T19:39:22.789Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "KeyCollectable.cs",
               "DocumentMoniker": "G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\KeyCollectable.cs",
               "RelativeDocumentMoniker": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\KeyCollectable.cs",
               "ToolTip": "G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\KeyCollectable.cs",
               "RelativeToolTip": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\KeyCollectable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T19:38:46.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T19:38:46.901Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "DoorItem.cs",
               "DocumentMoniker": "G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\DoorItem.cs",
               "RelativeDocumentMoniker": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\DoorItem.cs",
               "ToolTip": "G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\DoorItem.cs",
               "RelativeToolTip": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\DoorItem.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAxwCEAAABCAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACEAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T19:29:00.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T19:29:00.586Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "DoorInteractor.cs",
               "DocumentMoniker": "G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\DoorInteractor.cs",
               "RelativeDocumentMoniker": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\DoorInteractor.cs",
               "ToolTip": "G:\\UnityProjects\\InteractionSystem-GoktugBayil\\InteractionSystem\\Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\DoorInteractor.cs",
               "RelativeToolTip": "Assets\\InteractionSystem\\Scripts\\Runtime\\Core\\DoorInteractor.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBUAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAgwEkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T18:46:31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T18:46:31Z"
             }
           ]
         }

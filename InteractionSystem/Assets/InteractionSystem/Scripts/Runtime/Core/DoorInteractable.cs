@@ -9,9 +9,16 @@ public class DoorInteractable : MonoBehaviour
     [SerializeField] private float closeAngle = 0f;
     [SerializeField] private float rotationSpeed = 2f;
 
-    //Lock settings
+    [Header("Lock Settings")]
+    [SerializeField] private bool isLocked = false; //is the door locked
+    [SerializeField] private Key requiredKey; //which key is required to unlock the door
 
-    //Audio
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip openSound; // door opening sound
+    [SerializeField] private AudioClip closeSound; // door closing sound
+    [SerializeField] private AudioClip lockedSound;
+
+    private AudioSource audioSource;
 
     private bool isDoorOpen = false;
     private bool isAnimating = false;
@@ -20,6 +27,7 @@ public class DoorInteractable : MonoBehaviour
     private void Start()
     {
         targetRotation = Quaternion.Euler(0f, closeAngle, 0f);
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -37,6 +45,21 @@ public class DoorInteractable : MonoBehaviour
     }
     public void ToggleDoor()
     {
+        if(isLocked)
+        {
+            if(KeyInventory.Instance.HasKey(requiredKey))
+            {
+                Debug.Log($"Door '{gameObject.name}' unlocked with {requiredKey.keyName}");
+                isLocked = false;
+            }
+            else
+            {
+                PlaySound(lockedSound);
+                Debug.Log($"Door '{gameObject.name}' is locked. You need the {requiredKey.keyName} to open it.");
+                return;
+            }
+        }
+
         if(!isAnimating)
         {
             isDoorOpen = !isDoorOpen;
@@ -44,6 +67,16 @@ public class DoorInteractable : MonoBehaviour
             targetRotation = Quaternion.Euler(0f, isDoorOpen ? openAngle : closeAngle, 0f);
 
             isAnimating = true;
+
+            PlaySound(isDoorOpen ? openSound : closeSound);
+        }
+    }
+
+    void PlaySound(AudioClip clip)
+    {
+        if(audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
         }
     }
 }

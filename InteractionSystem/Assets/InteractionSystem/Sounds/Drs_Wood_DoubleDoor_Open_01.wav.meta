@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 95d36994c5aaf734e825b9b071968269
+guid: 9485bf88f1650ae478281426b0bff7aa
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6
@@ -25,5 +25,5 @@ AssetOrigin:
   productId: 262071
   packageName: Doors Small Sound Pack
   packageVersion: 1.0
-  assetPath: Assets/InteractionSystem/Sounds/Drs_Chest_Close_01.wav
+  assetPath: Assets/Doors Small Sound Pack/Drs_Wood_DoubleDoor_Open_01.wav
   uploadId: 604351
