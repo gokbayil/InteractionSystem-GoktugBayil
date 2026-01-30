@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoorInteractable : MonoBehaviour
+public class DoorInteractable : MonoBehaviour, IInteractable
 {
 
     [Header("Door Settings")]
@@ -24,6 +24,8 @@ public class DoorInteractable : MonoBehaviour
     private bool isAnimating = false;
     private Quaternion targetRotation;
 
+    public string InteractionPrompt => isLocked ? "Locked." : (isDoorOpen ? "Close the Door" : "Open the Door");
+
     private void Start()
     {
         targetRotation = Quaternion.Euler(0f, closeAngle, 0f);
@@ -43,6 +45,12 @@ public class DoorInteractable : MonoBehaviour
             }
         }
     }
+
+    public void Interact()
+    {
+        ToggleDoor();
+    }
+
     public void ToggleDoor()
     {
         if(isLocked)
@@ -63,11 +71,25 @@ public class DoorInteractable : MonoBehaviour
         if(!isAnimating)
         {
             isDoorOpen = !isDoorOpen;
-
             targetRotation = Quaternion.Euler(0f, isDoorOpen ? openAngle : closeAngle, 0f);
-
             isAnimating = true;
+            PlaySound(isDoorOpen ? openSound : closeSound);
+        }
+    }
 
+    public void ToggleDoorRemotely()
+    {
+        if (isLocked)
+        {
+            isLocked = false;
+            Debug.Log("Door unlocked remotely via button.");
+        }
+
+        if (!isAnimating)
+        {
+            isDoorOpen = !isDoorOpen;
+            targetRotation = Quaternion.Euler(0f, isDoorOpen ? openAngle : closeAngle, 0f);
+            isAnimating = true;
             PlaySound(isDoorOpen ? openSound : closeSound);
         }
     }
