@@ -1,59 +1,66 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
+using InteractionSystem.Runtime.Core; // IInteractable için
 
-public class ButtonInteractable : MonoBehaviour, IInteractable
+namespace InteractionSystem.Runtime.Interactables
 {
-    [Header("Target")]
-    [SerializeField] private DoorInteractable targetDoor;
-
-    [Header("Button Animation")]
-    [SerializeField] private Transform buttonMesh;
-    [SerializeField] private float pressDepth = 0.05f;
-    [SerializeField] private float pressSpeed = 5f;
-
-    private bool isPressed = false;
-
-    public string InteractionPrompt => "Press button to open the door.";
-
-    public void Interact()
+    public class ButtonInteractable : MonoBehaviour, IInteractable
     {
-        if (isPressed) return;
+        [Header("Target")]
+        [SerializeField] private DoorInteractable m_TargetDoor;
 
-        StartCoroutine(PressButtonRoutine());
-    }
+        [Header("Button Animation")]
+        [SerializeField] private Transform m_ButtonMesh;
+        [SerializeField] private float m_PressDepth = 0.05f;
+        [SerializeField] private float m_PressSpeed = 5f;
 
-    private IEnumerator PressButtonRoutine()
-    {
-        isPressed = true;
+        private bool m_IsPressed = false;
 
-        if(targetDoor != null)
+        public string InteractionPrompt => "Press button to open the door.";
+        public float HoldDuration => 0f;
+
+        public void Interact()
         {
-            targetDoor.ToggleDoorRemotely();
+            if (m_IsPressed) return;
+            StartCoroutine(PressButtonRoutine());
         }
 
-        Vector3 initialPos = buttonMesh.localPosition;
-        Vector3 targetPos = initialPos + (Vector3.down * pressDepth);
-
-        float t = 0;
-        while (t<1)
+        private IEnumerator PressButtonRoutine()
         {
-            t += Time.deltaTime * pressSpeed;
-            buttonMesh.localPosition = Vector3.Lerp(initialPos, targetPos, t);
-            yield return null;
+            m_IsPressed = true;
+
+            if (m_TargetDoor != null)
+            {
+                m_TargetDoor.ToggleDoorRemotely();
+            }
+
+            if (m_ButtonMesh != null)
+            {
+                Vector3 initialPos = m_ButtonMesh.localPosition;
+                Vector3 targetPos = initialPos + (Vector3.down * m_PressDepth);
+
+                // Aþaðý in
+                float t = 0;
+                while (t < 1)
+                {
+                    t += Time.deltaTime * m_PressSpeed;
+                    m_ButtonMesh.localPosition = Vector3.Lerp(initialPos, targetPos, t);
+                    yield return null;
+                }
+
+                yield return new WaitForSeconds(0.2f);
+
+                // Yukarý çýk
+                t = 0;
+                while (t < 1)
+                {
+                    t += Time.deltaTime * m_PressSpeed;
+                    m_ButtonMesh.localPosition = Vector3.Lerp(targetPos, initialPos, t);
+                    yield return null;
+                }
+            }
+
+            m_IsPressed = false;
         }
-
-        yield return new WaitForSeconds(0.2f);
-
-        t = 0;
-
-        while (t<1)
-        {
-            t += Time.deltaTime * pressSpeed;
-            buttonMesh.localPosition = Vector3.Lerp(targetPos, initialPos, t);
-            yield return null;
-        }
-
-        isPressed = false;
-
     }
 }

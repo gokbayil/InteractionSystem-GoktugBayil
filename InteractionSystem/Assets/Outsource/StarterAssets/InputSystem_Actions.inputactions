@@ -45,7 +45,7 @@
                     "name": "Crouch",
                     "type": "Button",
                     "id": "27c5f898-bc57-4ee1-8800-db469aca5fe3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -84,6 +84,15 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hold",
+                    "type": "Button",
+                    "id": "3cfb782b-fafc-46f7-9b08-a40f9eeb47f4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold(duration=1.5)",
                     "initialStateCheck": false
                 }
             ],
@@ -470,6 +479,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "06e9b6cf-f8b5-4df1-aebd-d68254384421",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

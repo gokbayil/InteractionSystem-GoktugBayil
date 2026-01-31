@@ -1,32 +1,38 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using InteractionSystem.Runtime.Core; // Key sýnýfý için
 
-public class UIManager : MonoBehaviour
+namespace InteractionSystem.Runtime.UI
 {
-
-    [Header("UI Elements")]
-    [SerializeField] private Transform keyPanel;
-    [SerializeField] private GameObject keyImagePrefab;
-
-    private Dictionary<Key, GameObject> keyImages = new Dictionary<Key, GameObject>();
-    public static UIManager Instance { get; private set; }
-
-    private void Awake()
+    public class UIManager : MonoBehaviour
     {
-        if(Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-    }
+        [Header("UI Elements")]
+        [SerializeField] private Transform m_KeyPanel;
+        [SerializeField] private GameObject m_KeyImagePrefab;
 
-    public void AddKeyToUI(Key key)
-    {
-        if(!keyImages.ContainsKey(key))
+        private Dictionary<Key, GameObject> m_KeyImages = new Dictionary<Key, GameObject>();
+        public static UIManager Instance { get; private set; }
+
+        private void Awake()
         {
-            GameObject keyImage = Instantiate(keyImagePrefab, keyPanel);
-            keyImage.GetComponent<Image>().sprite = key.keySprite;
-            keyImages[key] = keyImage;
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
+        }
+
+        public void AddKeyToUI(Key key)
+        {
+            if (!m_KeyImages.ContainsKey(key))
+            {
+                GameObject keyImage = Instantiate(m_KeyImagePrefab, m_KeyPanel);
+                if (keyImage.GetComponent<Image>() != null)
+                {
+                    keyImage.GetComponent<Image>().sprite = key.keySprite;
+                }
+                m_KeyImages[key] = keyImage;
+            }
         }
     }
 }

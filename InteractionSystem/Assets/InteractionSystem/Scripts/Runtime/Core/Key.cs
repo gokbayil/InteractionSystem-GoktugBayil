@@ -1,9 +1,12 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Key", menuName = "Scriptable Objects/Key")]
-public class Key : ScriptableObject
+namespace InteractionSystem.Runtime.Core
 {
-    public string keyName;
-    public int keyId;
-    public Sprite keySprite;
+    [CreateAssetMenu(fileName = "New Key", menuName = "InteractionSystem/Items/Key")]
+    public class Key : ScriptableObject
+    {
+        public string keyName;
+        public int keyId;
+        public Sprite keySprite;
+    }
 }

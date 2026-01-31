@@ -1,104 +1,134 @@
 using UnityEngine;
+using InteractionSystem.Runtime.Core;   // Key ve IInteractable için
+using InteractionSystem.Runtime.Player; // KeyInventory için (HATA BURADAYDI, DÜZELDÝ)
 
-public class DoorInteractable : MonoBehaviour, IInteractable
+namespace InteractionSystem.Runtime.Interactables
 {
-
-    [Header("Door Settings")]
-    [SerializeField] private Transform doorPivot; //pivotpoint of door
-    [SerializeField] private float openAngle = 90f;
-    [SerializeField] private float closeAngle = 0f;
-    [SerializeField] private float rotationSpeed = 2f;
-
-    [Header("Lock Settings")]
-    [SerializeField] private bool isLocked = false; //is the door locked
-    [SerializeField] private Key requiredKey; //which key is required to unlock the door
-
-    [Header("Audio Settings")]
-    [SerializeField] private AudioClip openSound; // door opening sound
-    [SerializeField] private AudioClip closeSound; // door closing sound
-    [SerializeField] private AudioClip lockedSound;
-
-    private AudioSource audioSource;
-
-    private bool isDoorOpen = false;
-    private bool isAnimating = false;
-    private Quaternion targetRotation;
-
-    public string InteractionPrompt => isLocked ? "Locked." : (isDoorOpen ? "Close the Door" : "Open the Door");
-
-    private void Start()
+    [RequireComponent(typeof(AudioSource))]
+    public class DoorInteractable : MonoBehaviour, IInteractable
     {
-        targetRotation = Quaternion.Euler(0f, closeAngle, 0f);
-        audioSource = GetComponent<AudioSource>();
-    }
+        [Header("Door Settings")]
+        [SerializeField] private Transform m_DoorPivot;
+        [SerializeField] private float m_OpenAngle = 90f;
+        [SerializeField] private float m_CloseAngle = 0f;
+        [SerializeField] private float m_RotationSpeed = 2f;
 
-    private void Update()
-    {
-        if (isAnimating)
+        [Header("Interaction Type")]
+        [SerializeField] private bool m_UseHoldInteraction = false;
+        [SerializeField] private float m_HoldTime = 1.5f;
+
+        [Header("Lock Settings")]
+        [SerializeField] private bool m_IsLocked = false;
+        [SerializeField] private Key m_RequiredKey;
+
+        [Header("Audio Settings")]
+        [SerializeField] private AudioClip m_OpenSound;
+        [SerializeField] private AudioClip m_CloseSound;
+        [SerializeField] private AudioClip m_LockedSound;
+
+        private AudioSource m_AudioSource;
+        private bool m_IsDoorOpen = false;
+        private bool m_IsAnimating = false;
+        private Quaternion m_TargetRotation;
+
+        public string InteractionPrompt
         {
-            doorPivot.localRotation = Quaternion.Lerp(doorPivot.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
-
-            if(Quaternion.Angle(doorPivot.localRotation, targetRotation) < 0.1f)
+            get
             {
-                doorPivot.localRotation = targetRotation;
-                isAnimating = false;
-            }
-        }
-    }
+                if (m_IsLocked)
+                    return m_RequiredKey != null
+                        ? $"Locked. Requires {m_RequiredKey.keyName}"
+                        : "Locked.";
 
-    public void Interact()
-    {
-        ToggleDoor();
-    }
+                if (m_IsDoorOpen) return "Press E to close";
 
-    public void ToggleDoor()
-    {
-        if(isLocked)
-        {
-            if(KeyInventory.Instance.HasKey(requiredKey))
-            {
-                Debug.Log($"Door '{gameObject.name}' unlocked with {requiredKey.keyName}");
-                isLocked = false;
-            }
-            else
-            {
-                PlaySound(lockedSound);
-                Debug.Log($"Door '{gameObject.name}' is locked. You need the {requiredKey.keyName} to open it.");
-                return;
+                return m_UseHoldInteraction ? "Hold E to open" : "Press E to Open";
             }
         }
 
-        if(!isAnimating)
-        {
-            isDoorOpen = !isDoorOpen;
-            targetRotation = Quaternion.Euler(0f, isDoorOpen ? openAngle : closeAngle, 0f);
-            isAnimating = true;
-            PlaySound(isDoorOpen ? openSound : closeSound);
-        }
-    }
+        public float HoldDuration => m_UseHoldInteraction ? m_HoldTime : 0f;
 
-    public void ToggleDoorRemotely()
-    {
-        if (isLocked)
+        private void Start()
         {
-            isLocked = false;
-            Debug.Log("Door unlocked remotely via button.");
+            m_AudioSource = GetComponent<AudioSource>();
+            // Baþlangýç rotasyonu
+            m_TargetRotation = transform.localRotation;
+            if (m_DoorPivot != null)
+            {
+                m_TargetRotation = m_DoorPivot.localRotation;
+            }
         }
 
-        if (!isAnimating)
+        private void Update()
         {
-            isDoorOpen = !isDoorOpen;
-            targetRotation = Quaternion.Euler(0f, isDoorOpen ? openAngle : closeAngle, 0f);
-            isAnimating = true;
-            PlaySound(isDoorOpen ? openSound : closeSound);
-        }
-    }
+            if (m_IsAnimating && m_DoorPivot != null)
+            {
+                m_DoorPivot.localRotation = Quaternion.Slerp(
+                    m_DoorPivot.localRotation,
+                    m_TargetRotation,
+                    Time.deltaTime * m_RotationSpeed
+                );
 
-    void PlaySound(AudioClip clip)
-    {
-        if(audioSource != null && clip != null)
+                if (Quaternion.Angle(m_DoorPivot.localRotation, m_TargetRotation) < 0.1f)
+                {
+                    m_DoorPivot.localRotation = m_TargetRotation;
+                    m_IsAnimating = false;
+                }
+            }
+        }
+
+        public void Interact()
         {
-            audioSource.PlayOneShot(clip);
+            if (m_IsAnimating) return;
+
+            if (m_IsLocked)
+            {
+                // KeyInventory referansý artýk hata vermez
+                if (KeyInventory.Instance != null && KeyInventory.Instance.HasKey(m_RequiredKey))
+                {
+                    Debug.Log($"Door unlocked with {m_RequiredKey.keyName}");
+                    m_IsLocked = false;
+                    PlaySound(m_OpenSound);
+                }
+                else
+                {
+                    PlaySound(m_LockedSound);
+                    Debug.Log("Door is locked.");
+                    return;
+                }
+            }
+
+            ToggleAction();
+        }
+
+        public void ToggleDoorRemotely()
+        {
+            if (m_IsLocked)
+            {
+                m_IsLocked = false;
+            }
+            ToggleAction();
+        }
+
+        private void ToggleAction()
+        {
+            if (!m_IsAnimating)
+            {
+                m_IsDoorOpen = !m_IsDoorOpen;
+                float targetAngle = m_IsDoorOpen ? m_OpenAngle : m_CloseAngle;
+                m_TargetRotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+                m_IsAnimating = true;
+                PlaySound(m_IsDoorOpen ? m_OpenSound : m_CloseSound);
+            }
+        }
+
+        private void PlaySound(AudioClip clip)
+        {
+            if (m_AudioSource != null && clip != null)
+            {
+                m_AudioSource.PlayOneShot(clip);
+            }
         }
     }
 }
