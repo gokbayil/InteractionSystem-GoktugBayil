@@ -40,7 +40,6 @@ namespace InteractionSystem.Runtime.Interactables
                 m_AudioSource.PlayOneShot(m_OpenSound);
             }
 
-            // Tekrar etkileþimi engellemek için collider'ý kapat
             Collider col = GetComponent<Collider>();
             if (col != null) col.enabled = false;
         }

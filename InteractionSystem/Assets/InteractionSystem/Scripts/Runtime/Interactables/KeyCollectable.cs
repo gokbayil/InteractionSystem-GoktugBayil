@@ -22,7 +22,7 @@ namespace InteractionSystem.Runtime.Interactables
         {
             if (m_Key != null)
             {
-                // KeyInventory'ye eriþim artýk sorunsuz
+
                 if (KeyInventory.Instance != null)
                 {
                     KeyInventory.Instance.AddKey(m_Key);

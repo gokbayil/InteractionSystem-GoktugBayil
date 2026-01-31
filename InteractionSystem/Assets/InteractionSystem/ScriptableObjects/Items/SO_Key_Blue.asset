@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 457ab4a6ec2fa71458b000051e9b12b2, type: 3}
-  m_Name: Red Key
+  m_Name: SO_Key_Blue
   m_EditorClassIdentifier: 
-  keyName: Red Key
-  keyId: 3
-  keySprite: {fileID: 21300000, guid: be911bb9bc6f0ee47baeb220a7701d40, type: 3}
+  keyName: Blue Key
+  keyId: 1
+  keySprite: {fileID: 21300000, guid: fd196bf2c80922a4ba47e30d96b6c790, type: 3}

@@ -1,6 +1,6 @@
 using UnityEngine;
 using InteractionSystem.Runtime.Core;   // Key ve IInteractable için
-using InteractionSystem.Runtime.Player; // KeyInventory için (HATA BURADAYDI, DÜZELDÝ)
+using InteractionSystem.Runtime.Player; // KeyInventory için
 
 namespace InteractionSystem.Runtime.Interactables
 {

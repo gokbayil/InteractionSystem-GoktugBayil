@@ -82,7 +82,7 @@ namespace InteractionSystem.Runtime.Player
                     {
                         m_CurrentInteractable.Interact();
                         ResetHold();
-                        UpdateInteractionText(); // Durum deðiþirse metni güncelle (örn: kapý açýldý)
+                        UpdateInteractionText(); // Durum deðiþirse metni güncelle (kapý açýldý)
                     }
                 }
                 else
